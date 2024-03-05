@@ -32,10 +32,14 @@ class ControllerAPI {
               frameType: item['frameType'] ?? '',
               desc: item['desc'],
               atk: item['atk'] ?? 0,
+              def: item['def'] ?? 0,
               race: item['race'] ?? '',
               attribute: item['attribute'] ?? '',
               archetype: item['archetype'] ?? '',
               linkval: item['linkval'] ?? 0,
+              banlistInfo: item['banlist_info'] != null
+                  ? BanlistInfo.fromJson(item['banlist_info'])
+                  : null,
               linkmarkers: (item['linkmarkers'] as List<dynamic>?)
                       ?.map((e) => e.toString())
                       .toList() ??

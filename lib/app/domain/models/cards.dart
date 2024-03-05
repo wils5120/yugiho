@@ -5,6 +5,7 @@ class DataCard {
     required this.type,
     required this.frameType,
     required this.desc,
+    required this.def,
     required this.atk,
     required this.race,
     required this.attribute,
@@ -15,6 +16,7 @@ class DataCard {
     required this.cardSets,
     required this.cardImages,
     required this.cardPrices,
+    this.banlistInfo,
   });
   int id;
   String name;
@@ -22,6 +24,7 @@ class DataCard {
   String frameType;
   String desc;
   int atk;
+  int def;
   String race;
   String attribute;
   String archetype;
@@ -31,6 +34,7 @@ class DataCard {
   List<CardSet> cardSets;
   List<CardImage> cardImages;
   List<CardPrice> cardPrices;
+  BanlistInfo? banlistInfo;
 }
 
 class CardImage {
@@ -101,4 +105,20 @@ class CardSet {
   String setRarity;
   String setRarityCode;
   String setPrice;
+}
+
+class BanlistInfo {
+  BanlistInfo(
+      {required this.banTcg, required this.banOcg, required this.banGoat});
+
+  factory BanlistInfo.fromJson(Map<String, dynamic> json) {
+    return BanlistInfo(
+      banTcg: json['ban_tcg'] ?? '',
+      banOcg: json['ban_ocg'] ?? '',
+      banGoat: json['ban_goat'] ?? '',
+    );
+  }
+  String banTcg;
+  String banOcg;
+  String banGoat;
 }
